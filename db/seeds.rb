@@ -2,6 +2,7 @@ require 'rest-client'
 require 'json'
 require 'pry'
 Spell.destroy_all
+
 # def seed_classes
 #   # make the web request
 #   response_string = RestClient.get('http://dnd5eapi.co/api/classes/')
