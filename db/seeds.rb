@@ -22,7 +22,7 @@ Spell.destroy_all
     response_hash["results"].each do |spell_hash|
       spell_info = RestClient.get(spell_hash["url"])
       spell_info = JSON.parse(spell_info)
-      instance_spell = Spell.create
+      instance_spell = Spell.new
       instance_spell.name = spell_info["name"]
       instance_spell.description = spell_info["desc"]
       instance_spell.level = spell_info["level"]
@@ -32,4 +32,5 @@ Spell.destroy_all
         class_array << x["name"]
       end
       instance_spell.classes = class_array.join(", ")
+      instance_spell.save
     end

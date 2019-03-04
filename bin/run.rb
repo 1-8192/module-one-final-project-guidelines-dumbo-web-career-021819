@@ -5,5 +5,3 @@ require_relative '../app/models/spell.rb'
 
 #character_class = get_class_from_user
 # seed_spells
-binding.pry
-50
