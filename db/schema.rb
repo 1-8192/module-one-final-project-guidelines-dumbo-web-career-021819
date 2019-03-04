@@ -10,6 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 1) do
+
+  create_table "character_classes", force: :cascade do |t|
+    t.string  "class_name"
+    t.string  "description"
+    t.integer "spellcasting"
+    t.integer "spell_slots_at_1"
+  end
 
 end
