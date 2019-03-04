@@ -4,17 +4,31 @@ require 'pry'
 Spell.destroy_all
 
 # def seed_classes
-#   # make the web request
-#   response_string = RestClient.get('http://dnd5eapi.co/api/classes/')
-#   response_hash = JSON.parse(response_string)
-#   response_hash["count"].to_i.times do
-#     response_hash["results"].each do |class_hash|
-#       class_info = RestClient.get(class_hash["url"])
-#       class_info = JSON.parse(class_info)
-#       instance_class = CharacterClass.new(:class_name = class_info["name"])
-#
-#     end
-#   end
+  # make the web request
+  response_string = RestClient.get('http://dnd5eapi.co/api/classes/')
+  response_hash = JSON.parse(response_string)
+  response_hash["count"].to_i.times do
+    response_hash["results"].each do |class_hash|
+      class_info = RestClient.get(class_hash["url"])
+      class_info = JSON.parse(class_info)
+      instance_class = CharacterClass.new
+      instance_class.class_name = class_info["name"]
+      if class_info.key?("spellcasting")
+        spellcasting_string = RestClient.get(class_info["spellcasting"]["url"])
+        spellcasting_hash = JSON.parse(spellcasting_string)
+        spellcasting_desc_array = []
+        spellcasting_hash["info"].each do |element|
+          if element.key?("desc")
+            spellcasting_desc_array << element["desc"]
+          end
+        end
+        instance_class.spellcasting = spellcasting_desc_array.join(" ")
+        binding.pry
+      else
+        instance_class.spellcasting = "none"
+      end
+    end
+  end
 # end
 
 # def seed_spells
