@@ -41,7 +41,8 @@ CharacterClass.destroy_all
       spell_info = JSON.parse(spell_info)
       instance_spell = Spell.new
       instance_spell.name = spell_info["name"]
-      instance_spell.description = spell_info["desc"]
+      instance_spell.description = spell_info["desc"][0]
+      binding.pry
       instance_spell.level = spell_info["level"]
       instance_spell.school = spell_info["school"]["name"]
       class_array = []

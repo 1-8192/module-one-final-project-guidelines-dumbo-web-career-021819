@@ -1,2 +1,3 @@
 class CharacterClass < ActiveRecord::Base
-end 
+  has_many :spells, through: :spell_class
+end
