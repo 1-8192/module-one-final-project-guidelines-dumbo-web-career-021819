@@ -1,5 +1,7 @@
 require 'bundler'
 Bundler.require
+require "sinatra/activerecord"
 
-ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'db/development.db')
+connection_details = YAML::load(File.open('config/database.yml'))
+ActiveRecord::Base.establish_connection(connection_details)
 require_all 'lib'
