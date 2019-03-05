@@ -30,4 +30,9 @@ first_prompt = first_options_prompt
   elsif first_prompt == "Slots"
     s_class_prompt = slots_class_prompt
     slots_level_prompt(s_class_prompt)
+    if save?
+      input_spell_name = ask_spell_name
+      create_spell_slot(input_spell_name, s_class_prompt)
+      binding.pry
+    end
   end

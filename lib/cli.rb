@@ -76,3 +76,19 @@ def slots_level_prompt(specific_class)
       spell.display
     end
   end
+#asks whether use wants to save spell slot
+def save?
+  prompt = TTY::Prompt.new
+  prompt.yes?("Would you like to save a spell at this time?")
+end
+#confirms name of spell to be saved to slot
+def ask_spell_name
+  p "Please input the name of the desired spell."
+  input = gets.chomp
+  input
+end
+#checks to make sure spell slot doesn't exist and adds it.
+def create_spell_slot(input_spell_name, input_character_class)
+  binding.pry
+  SpellSlot.find_or_create_by(spell_id: Spell.find_by(name: input_spell_name).id, character_class_id: CharacterClass.find_by(class_name: input_character_class).id)
+end
