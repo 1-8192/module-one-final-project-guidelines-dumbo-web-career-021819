@@ -58,6 +58,6 @@ wizard = CharacterClass.create(class_name: "Wizard", description: "Magical schol
 sorcerer = CharacterClass.create(class_name: "Sorcerer", description: "Naturally magical", spellcasting: "Can cast sorcerer spells")
 barbarian = CharacterClass.create(class_name: "Barbarian", description: "Brute", spellcasting: "None")
 
-fire_blast = Spell.create(name: "Fire Blast", description: "Huge blast of fire", level: 1, school: "Attack", classes: "Wizard, Sorcerer")
-ice_blast = Spell.create(name: "Ice Blast", description: "Huge blast of ice", level: 1, school: "Attack", classes: "Sorcerer")
-cure_wounds = Spell.create(name: "Cure Wounds", description: "Heals wounds", level: 1, school: "Healing", classes: "Cleric")
+fire_blast = Spell.create(name: "Fire Blast", description: "Huge blast of fire", level: 1, school: "Evocation", classes: "Wizard, Sorcerer")
+ice_blast = Spell.create(name: "Ice Blast", description: "Huge blast of ice", level: 1, school: "Evocation", classes: "Sorcerer")
+cure_wounds = Spell.create(name: "Cure Wounds", description: "Heals wounds", level: 3, school: "Necromancy", classes: "Cleric")

@@ -8,7 +8,7 @@ end
 
 def first_options_prompt
   prompt = TTY::Prompt.new
-  prompt.select("Are you interested in class information, spell information, or do you want to view your current spell slots:", %w(Class Spells Slots))
+  prompt.select("Are you interested in class information, spell information, or do you want to view/build spell slots for your character:", %w(Class Spells Slots))
 end
 
 def class_prompt
@@ -24,4 +24,25 @@ def specific_class_prompt
       character_class.display
     end
   end
+end
+
+def spells_prompt
+  prompt = TTY::Prompt.new
+  prompt.select("There are over 300 spells in D&D 5e, would you like to view them all, or refine your search by class, spell level, or school of magic?", %w(All Class Level School))
+end
+
+def spells_level_prompt
+  puts "Please enter the desired spell level (0-9)"
+  input = gets.chomp.to_i
+  if input < 0 || input > 9
+    puts "Invalid spell level."
+  else
+    Spell.all.display_by_level(input)
+  end
+end
+
+def spells_school_prompt
+  prompt = TTY::Prompt.new
+  school_prompt = prompt.select("There are 8 schools of magic in 5th edition. To view associated spells, please pick from the following list:", %w(Abjuration Conjuration Divination Enchantment Evocation Illusion Necromancy Transmutation))
+  Spell.all.display_by_school(school_prompt)
 end
