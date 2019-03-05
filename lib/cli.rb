@@ -4,6 +4,7 @@ require 'pry'
 
 def welcome
   p "Welcome, adventurer, to the D&D spell builder! This is a resource where you can browse spells and save them to personalized spell slots to help build your character. All information provided is based on the 5th edition of the game and comes straight from the API. You can trust us!"
+  puts
 end
 
 def first_options_prompt
@@ -89,6 +90,10 @@ def ask_spell_name
 end
 #checks to make sure spell slot doesn't exist and adds it.
 def create_spell_slot(input_spell_name, input_character_class)
-  binding.pry
   SpellSlot.find_or_create_by(spell_id: Spell.find_by(name: input_spell_name).id, character_class_id: CharacterClass.find_by(class_name: input_character_class).id)
+end
+
+def view_slots?
+  prompt = TTY::Prompt.new
+  prompt.yes?("Would you like to view your spell slots?")
 end

@@ -3,6 +3,7 @@ require 'json'
 require 'pry'
 Spell.destroy_all
 CharacterClass.destroy_all
+SpellSlot.destroy_all
 
 # # Seeds the class info
 #   response_string = RestClient.get('http://dnd5eapi.co/api/classes/')

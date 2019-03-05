@@ -1,5 +1,5 @@
 class Spell < ActiveRecord::Base
-  has_many :character_classes, through: :spell_slot
+  has_many :character_classes, through: :spell_slots
 
 #displays instance info in a nicer format.
  def display
@@ -50,22 +50,12 @@ end
 #selects all instances by class and spell level
 def self.group_by_class_and_level(input_class, input_level)
   output_array = []
-  pre_output_array = []
   self.all.map do |ind_spell|
-    class_array = ind_spell.classes.split(",")
-    class_array.select do |character_class|
-      if character_class == input_class
-        pre_output_array << character_class
-      end
-    end
-  end
-  pre_output_array.map do |ind_spell|
-    self.all.map do |ind_spell|
-      if ind_spell.level == input_level
-        output_array << ind_spell
-      end
-    end
-    return output_array
+    if ind_spell.level == input_level && ind_spell.classes.include?(input_class)
+      output_array << ind_spell
   end
 end
+output_array 
+end
+
 end

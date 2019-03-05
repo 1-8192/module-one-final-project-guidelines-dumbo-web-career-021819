@@ -2,8 +2,11 @@ require_relative '../config/environment.rb'
 require_relative '../db/seeds.rb'
 require_all 'lib'
 require_all 'app'
+old_logger = ActiveRecord::Base.logger
+ActiveRecord::Base.logger = nil
 
 prompt = TTY::Prompt.new
+
 welcome
 first_prompt = first_options_prompt
   if first_prompt == "Class"
@@ -33,6 +36,12 @@ first_prompt = first_options_prompt
     if save?
       input_spell_name = ask_spell_name
       create_spell_slot(input_spell_name, s_class_prompt)
-      binding.pry
+      if  view_slots?
+        count = 0
+        SpellSlot.all.each do |x|
+          x.display(count)
+          count +=1
+        end 
+      end
     end
   end
