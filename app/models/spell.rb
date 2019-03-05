@@ -1,5 +1,5 @@
 class Spell < ActiveRecord::Base
-  has_many :character_classes, through: :spell_class
+  has_many :character_classes, through: :spell_slot
 
   # def self.assign_classes_to_spells
   #   self.all.each do |spell|
