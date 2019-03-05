@@ -67,14 +67,13 @@ def slots_class_prompt
 end
 
 def slots_level_prompt(specific_class)
-  specific_class_spells_array = Spell.all.group_by_class(specific_class)
   puts "Which level of spell are you interested in? (0-9)"
   spell_level = gets.chomp.to_i
   if spell_level < 0 || spell_level > 9
     puts "Invalid level! Try again!"
     spell_level = gets.chomp.to_i
   else
-    specific_class_spells_array.group_by_level(spell_level).map do |spell|
+    Spell.all.group_by_class_and_level(specific_class, spell_level).map do |spell|
       spell.display
     end
   end
