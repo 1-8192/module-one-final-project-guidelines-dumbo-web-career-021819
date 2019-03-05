@@ -10,20 +10,37 @@ class Spell < ActiveRecord::Base
    puts "-----------------------------------"
  end
 
- def self.display_by_level(level)
+ def self.group_by_level(level)
+   group_array = []
    self.all.map do |ind_spell|
      if ind_spell.level == level
-       ind_spell.display
+       group_array << ind_spell
      end
    end
+   group_array
  end
 
- def self.display_by_school(school)
+ def self.group_by_school(school)
+   group_array = []
    self.all.map do |ind_spell|
      if ind_spell.school == school
-       ind_spell.display
+       group_array << ind_spell
      end
    end
-end 
+   group_array
+end
+
+def self.group_by_class(input_class)
+  group_array = []
+  self.all.map do |ind_spell|
+    class_array = ind_spell.classes.split(",")
+    class_array.map do |character_class|
+      if character_class == input_class
+        group_array << ind_spell
+      end
+    end
+  end
+  group_array
+end
 
 end

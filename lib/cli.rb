@@ -37,12 +37,45 @@ def spells_level_prompt
   if input < 0 || input > 9
     puts "Invalid spell level."
   else
-    Spell.all.display_by_level(input)
+    binding.pry
+    Spell.all.group_by_level(input).map do |spell|
+      spell.display
+    end
   end
 end
 
 def spells_school_prompt
   prompt = TTY::Prompt.new
   school_prompt = prompt.select("There are 8 schools of magic in 5th edition. To view associated spells, please pick from the following list:", %w(Abjuration Conjuration Divination Enchantment Evocation Illusion Necromancy Transmutation))
-  Spell.all.display_by_school(school_prompt)
+  Spell.all.group_by_school(school_prompt).map do |spell|
+    spell.display
+  end
+end
+
+
+def spells_class_prompt
+  prompt = TTY::Prompt.new
+  class_prompt = prompt.select("Pick a class to view the associated spells:", %w(Barbarian Bard Cleric Druid Fighter Monk Paladin Ranger Rogue Sorcerer Warlock Wizard))
+  Spell.all.group_by_class(class_prompt).map do |spell|
+    spell.display
+  end
+end
+
+def slots_class_prompt
+  prompt = TTY::Prompt.new
+  slots_class_prompt = prompt.select("Which class are you building spell slots for?", %w(Barbarian Bard Cleric Druid Fighter Monk Paladin Ranger Rogue Sorcerer Warlock Wizard))
+end
+
+def slots_level_prompt(specific_class)
+  specific_class_spells_array = Spell.all.group_by_class(specific_class)
+  puts "Which level of spell are you interested in? (0-9)"
+  spell_level = gets.chomp.to_i
+  if spell_level < 0 || spell_level > 9
+    puts "Invalid level! Try again!"
+    spell_level = gets.chomp.to_i
+  else
+    specific_class_spells_array.group_by_level(spell_level).map do |spell|
+      spell.display
+    end
+  end
 end

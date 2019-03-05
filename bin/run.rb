@@ -23,6 +23,11 @@ first_prompt = first_options_prompt
     elsif first_spell_prompt == "Level"
       spells_level_prompt
     elsif first_spell_prompt == "School"
-      spells_school_prompt 
+      spells_school_prompt
+    elsif first_spell_prompt == "Class"
+      spells_class_prompt
     end
+  elsif first_prompt == "Slots"
+    s_class_prompt = slots_class_prompt
+    slots_level_prompt(s_class_prompt)
   end
