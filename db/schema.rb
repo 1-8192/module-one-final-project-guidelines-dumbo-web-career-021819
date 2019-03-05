@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6) do
+ActiveRecord::Schema.define(version: 7) do
 
   create_table "character_classes", force: :cascade do |t|
     t.string "class_name"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.string "spellcasting"
   end
 
-  create_table "spell_class", force: :cascade do |t|
+  create_table "spell_slot", force: :cascade do |t|
     t.integer "spell_id"
     t.integer "character_class_id"
   end

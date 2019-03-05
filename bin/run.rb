@@ -1,7 +1,14 @@
 require_relative '../config/environment.rb'
 require_relative '../db/seeds.rb'
-require_relative '../app/models/character_class.rb'
-require_relative '../app/models/spell.rb'
+require_all 'lib'
+require_all 'app'
 
-#character_class = get_class_from_user
-# seed_spells
+prompt = TTY::Prompt.new
+welcome
+if first_options_prompt == "class"
+  if class_prompt == "all"
+    p CharacterClass.all
+  end 
+end
+
+binding.pry
