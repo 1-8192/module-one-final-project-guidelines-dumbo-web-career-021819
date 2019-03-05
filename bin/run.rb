@@ -33,15 +33,20 @@ first_prompt = first_options_prompt
   elsif first_prompt == "Slots"
     s_class_prompt = slots_class_prompt
     slots_level_prompt(s_class_prompt)
-    if save?
-      input_spell_name = ask_spell_name
-      create_spell_slot(input_spell_name, s_class_prompt)
-      if  view_slots?
-        count = 0
-        SpellSlot.all.each do |x|
-          x.display(count)
-          count +=1
-        end 
+    save_or_view_prompt = save_or_view_or_exit?
+    while save_or_view_prompt != "EXIT"
+      if save_or_view_prompt == "SAVE"
+        input_spell_name = ask_spell_name
+        create_spell_slot(input_spell_name, s_class_prompt)
+        save_or_view_prompt = save_or_view_or_exit?
+      elsif save_or_view_prompt == "VIEW"
+          count = 1
+          SpellSlot.all.each do |x|
+            x.display(count)
+            count +=1
+          end
+            save_or_view_prompt = save_or_view_or_exit?
       end
     end
+    p "goodbye"
   end
