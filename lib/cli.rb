@@ -34,15 +34,14 @@ end
 def spells_level_prompt
   puts "Please enter the desired spell level (0-9)"
   input = gets.chomp.to_i
-  if input < 0 || input > 9
-    puts "Invalid spell level."
-  else
-    binding.pry
+  while input < 0 || input > 9
+    puts "Invalid level! Try again!"
+    input = gets.chomp.to_i
+  end
     Spell.all.group_by_level(input).map do |spell|
       spell.display
     end
   end
-end
 
 def spells_school_prompt
   prompt = TTY::Prompt.new
@@ -69,12 +68,11 @@ end
 def slots_level_prompt(specific_class)
   puts "Which level of spell are you interested in? (0-9)"
   spell_level = gets.chomp.to_i
-  if spell_level < 0 || spell_level > 9
+  while spell_level < 0 || spell_level > 9
     puts "Invalid level! Try again!"
     spell_level = gets.chomp.to_i
-  else
+  end
     Spell.all.group_by_class_and_level(specific_class, spell_level).map do |spell|
       spell.display
     end
   end
-end
