@@ -59,6 +59,5 @@ while first_prompt != "Exit"
     first_prompt = first_options_prompt
   end
 end
-
-
-exit_method
+exit_image
+exit_message 

@@ -2,21 +2,21 @@ require 'tty-prompt'
 require 'pry'
 
 def welcome_image
-puts 
+puts
 puts "                                 ______________"
 puts "           ,===:'.,            `-._            "
 puts "                `:.`---.__         `-._        "
 puts "                  `:.     `--.         `.      "
-puts "                    \.        `.         `.    "
-puts "            (,,(,    \.         `.   ____,-`., "
-puts "         (,'     `/   \.   ,--.___`.'          "
-puts "     ,  ,'  ,--.  `,   \.;'         `          "
-puts "      `{, {    \  :    \;                      "
+puts "                    \\.        `.         `.    "
+puts "            (,,(,    \\.         `.   ____,-`., "
+puts "         (,'     `/   \\.   ,--.___`.'          "
+puts "     ,  ,'  ,--.  `,   \\.;'         `          "
+puts "      `{, {    \\  :    \\;                      "
 puts "        ,,'    /  /    //                      "
 puts "        j;;    /  ,' ,-//.    ,---.      ,     "
 puts "        \;'   /  ,' /  _  \  /  _  \   ,'/     "
 puts "              \   `'  / \  `'  / \  `.' /      "
-puts "               `.___,'   `.__,'   `.__,'  img_cource = John VanderZwaag"
+puts "               `.___,'   `.__,'   `.__,'  img_source = John VanderZwaag"
 puts
 end
 
@@ -130,7 +130,23 @@ end
 end
 
 #exit message
-def exit_method
+def exit_image
+puts "                         "
+puts"                       ______                 "
+puts"                     .-      -.             "
+puts"                   /           \\           "
+puts"                  |              |         "
+puts"                  |,  .-.  .-.  ,|         "
+puts"                  | )(__/ \\__)( |         "
+puts"                  |/     /\\   \\|         "
+puts"       (@_        (_     ^^     _)                                 "
+puts"_      ) \\_______\\__|IIIIII|__/__________________________   "
+puts" (_)@8@8{}<________|-\\IIIIII/-|___________________________ > "
+puts"        )_/        \\          /                                    "
+puts"        (@           `--------` img_source = jgs                   "
+end
+
+def exit_message
   puts
   puts "*************************"
   puts "Godspeed, dungeon delver!"
