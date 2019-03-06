@@ -14,7 +14,7 @@ class SpellSlot < ActiveRecord::Base
   def self.group_by_class(input_class)
     self.all.select do |ind_spell_slot|
       ind_spell_slot.character_class.class_name == input_class
-    end 
+    end
   end
 
 end

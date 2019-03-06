@@ -56,12 +56,7 @@ end
 
 #refines search by spell level
 def spells_level_prompt
-  puts "Please enter the desired spell level (0-9)"
-  input = gets.chomp.to_i
-  while input < 0 || input > 9
-    puts "Invalid level! Try again!"
-    input = gets.chomp.to_i
-  end
+    input = get_spell_level
     Spell.all.group_by_level(input).map do |spell|
       spell.display
     end
@@ -93,16 +88,12 @@ end
 
 #asks user to refine search by spell level
 def slots_level_prompt(specific_class)
-  puts "Which level of spell are you interested in? (0-9)"
-  spell_level = gets.chomp.to_i
-  while spell_level < 0 || spell_level > 9
-    puts "Invalid level! Try again!"
-    spell_level = gets.chomp.to_i
-  end
+    spell_level = get_spell_level
     Spell.all.group_by_class_and_level(specific_class, spell_level).map do |spell|
       spell.display
     end
   end
+
 #asks whether use wants to save spell slot
 def save_or_view_or_back?
   prompt = TTY::Prompt.new
@@ -124,15 +115,34 @@ end
 def display_spell_slots(character_class)
   class_slots = SpellSlot.group_by_class(character_class)
   if class_slots == []
+    puts
     puts "Your #{character_class} does not know any spells yet."
+    puts
   else
+    puts
     puts "Your #{character_class} knows the folowing spells:"
+    count_slots(class_slots)
+  end
+end
+
+# finds spell slots for the class, and renumbers them from 1.
+def count_slots(slots_to_count)
   count = 1
-  class_slots.map do |x|
+  slots_to_count.map do |x|
     x.display(count)
     count +=1
   end
 end
+
+# gets user input for desired spell level
+def get_spell_level
+  puts "Please enter the desired spell level (0-9)"
+  input = gets.chomp.to_i
+  while input < 0 || input > 9
+    puts "Invalid level! Try again!"
+    input = gets.chomp.to_i
+  end
+  input
 end
 
 #exit image and message

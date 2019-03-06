@@ -3,6 +3,7 @@ class Spell < ActiveRecord::Base
 
 #displays instance info in a nicer format.
  def display
+   puts
    puts "Spell name: #{self.name}"
    puts "Description: #{self.description}"
    puts "Level: #{self.level}"

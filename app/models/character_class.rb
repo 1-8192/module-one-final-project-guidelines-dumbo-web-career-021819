@@ -3,6 +3,7 @@ class CharacterClass < ActiveRecord::Base
 
   #Displays instance info in a nicer format
   def display
+    puts
     puts "Class: #{self.class_name}"
     puts "Description: #{self.description}"
     puts "Spellcasting: #{spellcasting}"
