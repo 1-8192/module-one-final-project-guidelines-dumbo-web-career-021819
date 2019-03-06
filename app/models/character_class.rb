@@ -4,9 +4,12 @@ class CharacterClass < ActiveRecord::Base
   #Displays instance info in a nicer format
   def display
     puts
-    puts "Class: #{self.class_name}"
+    puts "* Class: #{self.class_name} *"
+    puts
     puts "Description: #{self.description}"
+    puts
     puts "Spellcasting: #{spellcasting}"
+    puts
     puts "-----------------------------"
   end
 
