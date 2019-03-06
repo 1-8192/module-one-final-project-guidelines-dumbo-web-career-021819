@@ -15,8 +15,8 @@ puts "     ,  ,'  ,--.  `,   \\.;'         `          "
 puts "      `{, {    \\  :    \\;                      "
 puts "        ,,'    /  /    //                      "
 puts "        j;;    /  ,' ,-//.    ,---.      ,     "
-puts "        \;'   /  ,' /  _  \  /  _  \   ,'/     "
-puts "              \   `'  / \  `'  / \  `.' /      "
+puts "        \\;'   /  ,' /  _ \\  /  _ \\   ,'/     "
+puts "              \   `'  / \\  `' / \\  `.' /      "
 puts "               `.___,'   `.__,'   `.__,'  img_source = John VanderZwaag"
 puts
 end
@@ -158,9 +158,9 @@ end
 # exit image and message
 def exit_image
 puts "                         "
-puts"                       ______                 "
-puts"                     .-      -.             "
-puts"                   /           \\           "
+puts"                      ______                 "
+puts"                    .-      -.             "
+puts"                  /           \\           "
 puts"                  |            |         "
 puts"                  |, .-.  .-. ,|         "
 puts"                  | )(__/\\__)( |         "
