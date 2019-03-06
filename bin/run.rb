@@ -14,7 +14,7 @@ while first_prompt != "Exit"
   first_prompt = first_options_prompt
   if first_prompt == "Class"
     class_prompt_result = class_prompt
-      while class_prompt_result != "Exit"
+      while class_prompt_result != "Back"
         if class_prompt_result == "All"
         CharacterClass.all.map do |character_class|
           character_class.display
@@ -27,7 +27,7 @@ while first_prompt != "Exit"
 
   elsif first_prompt == "Spells"
     first_spell_prompt = spells_prompt
-      while first_spell_prompt != "Exit"
+      while first_spell_prompt != "Back"
         if first_spell_prompt == "All"
           Spell.all.map do |ind_spell|
             ind_spell.display
@@ -45,8 +45,8 @@ while first_prompt != "Exit"
   elsif first_prompt == "Slots"
     s_class_prompt = slots_class_prompt
     slots_level_prompt(s_class_prompt)
-    save_or_view_prompt = save_or_view_or_exit?
-    while save_or_view_prompt != "Exit"
+    save_or_view_prompt = save_or_view_or_back?
+    while save_or_view_prompt != "Back"
       if save_or_view_prompt == "Save"
         input_spell_name = ask_spell_name
         create_spell_slot(input_spell_name, s_class_prompt)
@@ -54,10 +54,10 @@ while first_prompt != "Exit"
         display_spell_slots(s_class_prompt)
       end
       # first_prompt = first_options_prompt
-      save_or_view_prompt = save_or_view_or_exit?
+      save_or_view_prompt = save_or_view_or_back?
     end
     first_prompt = first_options_prompt
   end
 end
 exit_image
-exit_message 
+exit_message

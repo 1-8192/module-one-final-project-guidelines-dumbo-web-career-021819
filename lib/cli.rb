@@ -37,7 +37,7 @@ end
 #class info initial prompt
 def class_prompt
   prompt = TTY::Prompt.new
-  prompt.select("Welcome to the class information section. Would you like to see information for all classes or a specific one?", %w(All Specific Exit))
+  prompt.select("Welcome to the class information section. Would you like to see information for all classes or a specific one?", %w(All Specific Back))
 end
 
 #brings up info on a specific class
@@ -54,7 +54,7 @@ end
 #initial spell search prompt
 def spells_prompt
   prompt = TTY::Prompt.new
-  prompt.select("There are over 300 spells in D&D 5e, would you like to view them all, or refine your search by class, spell level, or school of magic?", %w(All Class Level School Exit))
+  prompt.select("There are over 300 spells in D&D 5e, would you like to view them all, or refine your search by class, spell level, or school of magic?", %w(All Class Level School Back))
 end
 
 #refines search by spell level
@@ -107,9 +107,9 @@ def slots_level_prompt(specific_class)
     end
   end
 #asks whether use wants to save spell slot
-def save_or_view_or_exit?
+def save_or_view_or_back?
   prompt = TTY::Prompt.new
-  prompt.select("Would you like to save a spell, view your current spell slots, or exit this menu?", %w(Save View Exit))
+  prompt.select("Would you like to save a spell, view your current spell slots, or exit this menu?", %w(Save View Back))
 end
 #confirms name of spell to be saved to slot
 def ask_spell_name
