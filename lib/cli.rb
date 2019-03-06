@@ -11,12 +11,12 @@ end
 
 def first_options_prompt
   prompt = TTY::Prompt.new
-  prompt.select("Are you interested in class information, spell information, or do you want to view/build spell slots for your character:", %w(Class Spells Slots))
+  prompt.select("Are you interested in class information, spell information, or do you want to view/build spell slots for your character:", %w(Class Spells Slots Exit))
 end
 
 def class_prompt
   prompt = TTY::Prompt.new
-  prompt.select("Welcome to the class information section. Would you like to see information for all classes or a specific one?", %w(All Specific))
+  prompt.select("Welcome to the class information section. Would you like to see information for all classes or a specific one?", %w(All Specific Exit))
 end
 
 def specific_class_prompt
@@ -31,7 +31,7 @@ end
 
 def spells_prompt
   prompt = TTY::Prompt.new
-  prompt.select("There are over 300 spells in D&D 5e, would you like to view them all, or refine your search by class, spell level, or school of magic?", %w(All Class Level School))
+  prompt.select("There are over 300 spells in D&D 5e, would you like to view them all, or refine your search by class, spell level, or school of magic?", %w(All Class Level School Exit))
 end
 
 def spells_level_prompt
@@ -82,7 +82,7 @@ def slots_level_prompt(specific_class)
 #asks whether use wants to save spell slot
 def save_or_view_or_exit?
   prompt = TTY::Prompt.new
-  prompt.select("Would you like to save a spell, view your current spell slots, or exit this menu?", %w(SAVE VIEW EXIT))
+  prompt.select("Would you like to save a spell, view your current spell slots, or exit this menu?", %w(Save View Exit))
 end
 #confirms name of spell to be saved to slot
 def ask_spell_name
@@ -90,7 +90,14 @@ def ask_spell_name
   input = gets.chomp
   input
 end
+
 #checks to make sure spell slot doesn't exist and adds it.
 def create_spell_slot(input_spell_name, input_character_class)
   SpellSlot.find_or_create_by(spell_id: Spell.find_by(name: input_spell_name).id, character_class_id: CharacterClass.find_by(class_name: input_character_class).id)
+end
+
+#exit message
+def exit_method
+  puts "Godspeed, dungeon delver!"
+  exit 
 end

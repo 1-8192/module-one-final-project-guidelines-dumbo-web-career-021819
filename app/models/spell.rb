@@ -36,15 +36,9 @@ end
 #selects all instances of a specific class
 def self.group_by_class(input_class)
   input_class_array = []
-  self.all.map do |ind_spell|
-    class_array = ind_spell.classes.split(",")
-    class_array.select do |character_class|
-      if character_class == input_class
-        input_class_array << character_class
-      end
-    end
-  end
-  input_class_array
+  self.all.select do |ind_spell|
+    ind_spell.classes.include?(input_class)
+  end 
 end
 
 #selects all instances by class and spell level
@@ -55,7 +49,7 @@ def self.group_by_class_and_level(input_class, input_level)
       output_array << ind_spell
   end
 end
-output_array 
+output_array
 end
 
 end
