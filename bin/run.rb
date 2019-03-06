@@ -7,6 +7,7 @@ ActiveRecord::Base.logger = nil
 
 prompt = TTY::Prompt.new
 
+welcome_image
 welcome
 first_prompt = ""
 while first_prompt != "Exit"

@@ -1,6 +1,25 @@
 require 'tty-prompt'
 require 'pry'
 
+def welcome_image
+puts 
+puts "                                 ______________"
+puts "           ,===:'.,            `-._            "
+puts "                `:.`---.__         `-._        "
+puts "                  `:.     `--.         `.      "
+puts "                    \.        `.         `.    "
+puts "            (,,(,    \.         `.   ____,-`., "
+puts "         (,'     `/   \.   ,--.___`.'          "
+puts "     ,  ,'  ,--.  `,   \.;'         `          "
+puts "      `{, {    \  :    \;                      "
+puts "        ,,'    /  /    //                      "
+puts "        j;;    /  ,' ,-//.    ,---.      ,     "
+puts "        \;'   /  ,' /  _  \  /  _  \   ,'/     "
+puts "              \   `'  / \  `'  / \  `.' /      "
+puts "               `.___,'   `.__,'   `.__,'  img_cource = John VanderZwaag"
+puts
+end
+
 
 def welcome
   puts
@@ -112,6 +131,10 @@ end
 
 #exit message
 def exit_method
+  puts
+  puts "*************************"
   puts "Godspeed, dungeon delver!"
+  puts "*************************"
+  puts
   exit
 end
