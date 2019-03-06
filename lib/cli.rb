@@ -21,7 +21,7 @@ puts "               `.___,'   `.__,'   `.__,'  img_source = John VanderZwaag"
 puts
 end
 
-# weclomes user with nice words
+# welcomes user with nice words
 def welcome
   puts
   puts "-------------------------------------------------------------------"
@@ -60,7 +60,7 @@ def spells_level_prompt
     Spell.all.group_by_level(input).map do |spell|
       spell.display
     end
-  end
+end
 
 #asks user to refine search by school of magic
 def spells_school_prompt
@@ -83,7 +83,7 @@ end
 #asks user to pick a clas to build slots for
 def slots_class_prompt
   prompt = TTY::Prompt.new
-  slots_class_prompt = prompt.select("Which caster class are you building spell slots for?", %w(Bard Cleric Druid Paladin Ranger Sorcerer Warlock Wizard))
+  prompt.select("For which caster class are you building spell slots?", %w(Bard Cleric Druid Paladin Ranger Sorcerer Warlock Wizard))
 end
 
 #asks user to refine search by spell level
@@ -92,7 +92,7 @@ def slots_level_prompt(specific_class)
     Spell.all.group_by_class_and_level(specific_class, spell_level).map do |spell|
       spell.display
     end
-  end
+end
 
 #asks whether use wants to save spell slot
 def save_or_view_or_back?
@@ -106,18 +106,22 @@ def ask_spell_name
   input
 end
 
-#checks to make sure spell exists, then creates slot and saves it, if it does.
+# checks to make sure spell exists, then creates slot and saves it, if it does.
 def create_spell_slot(input_spell_name, input_character_class)
   if Spell.find_by(name: input_spell_name).nil?
     puts
     puts "Not a valid spell! Try again!"
     puts
-  else
+  elsif Spell.find_by(name: input_spell_name).classes.include?(input_character_class)
     SpellSlot.find_or_create_by(spell_id: Spell.find_by(name: input_spell_name).id, character_class_id: CharacterClass.find_by(class_name: input_character_class).id)
+  else
+    puts
+    puts "Your class cannot learn that spell."
+    puts
   end
 end
 
-#displays spell slots for current class
+# displays spell slots for current class
 def display_spell_slots(character_class)
   class_slots = SpellSlot.group_by_class(character_class)
   if class_slots == []
@@ -151,7 +155,7 @@ def get_spell_level
   input
 end
 
-#exit image and message
+# exit image and message
 def exit_image
 puts "                         "
 puts"                       ______                 "

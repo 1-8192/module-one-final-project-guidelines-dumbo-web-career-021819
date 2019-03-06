@@ -2,10 +2,10 @@ require_relative '../config/environment.rb'
 require_relative '../db/seeds.rb'
 require_all 'lib'
 require_all 'app'
-old_logger = ActiveRecord::Base.logger
+
+ActiveRecord::Base.logger
 ActiveRecord::Base.logger = nil
 
-prompt = TTY::Prompt.new
 # initial welcome to the app
 welcome_image
 welcome
@@ -60,7 +60,6 @@ while first_prompt != "Exit"
       end
       save_or_view_prompt = save_or_view_or_back?
     end
-    first_prompt = first_options_prompt
   end
 end
 
