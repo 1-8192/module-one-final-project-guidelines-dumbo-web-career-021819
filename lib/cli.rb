@@ -28,16 +28,19 @@ def welcome
   puts
 end
 
+#initial promt asks user to search class info, spells, or build spell slots
 def first_options_prompt
   prompt = TTY::Prompt.new
   prompt.select("Are you interested in class information, spell information, or do you want to view/build spell slots for your character:", %w(Class Spells Slots Exit))
 end
 
+#class info initial prompt
 def class_prompt
   prompt = TTY::Prompt.new
   prompt.select("Welcome to the class information section. Would you like to see information for all classes or a specific one?", %w(All Specific Exit))
 end
 
+#brings up info on a specific class
 def specific_class_prompt
   prompt = TTY::Prompt.new
   choice = prompt.select("Please select a class you'd like to know more about", %w(Barbarian Bard Cleric Druid Fighter Monk Paladin Ranger Rogue Sorcerer Warlock Wizard))
@@ -48,11 +51,13 @@ def specific_class_prompt
   end
 end
 
+#initial spell search prompt
 def spells_prompt
   prompt = TTY::Prompt.new
   prompt.select("There are over 300 spells in D&D 5e, would you like to view them all, or refine your search by class, spell level, or school of magic?", %w(All Class Level School Exit))
 end
 
+#refines search by spell level
 def spells_level_prompt
   puts "Please enter the desired spell level (0-9)"
   input = gets.chomp.to_i
@@ -65,6 +70,7 @@ def spells_level_prompt
     end
   end
 
+#asks user to refine search by school of magic
 def spells_school_prompt
   prompt = TTY::Prompt.new
   school_prompt = prompt.select("There are 8 schools of magic in 5th edition. To view associated spells, please pick from the following list:", %w(Abjuration Conjuration Divination Enchantment Evocation Illusion Necromancy Transmutation))
@@ -73,7 +79,7 @@ def spells_school_prompt
   end
 end
 
-
+#asks user to refine spell search by class
 def spells_class_prompt
   prompt = TTY::Prompt.new
   class_prompt = prompt.select("Pick a class to view the associated spells:", %w(Barbarian Bard Cleric Druid Fighter Monk Paladin Ranger Rogue Sorcerer Warlock Wizard))
@@ -82,11 +88,13 @@ def spells_class_prompt
   end
 end
 
+#asks user to pick a clas to build slots for
 def slots_class_prompt
   prompt = TTY::Prompt.new
-  slots_class_prompt = prompt.select("Which class are you building spell slots for?", %w(Barbarian Bard Cleric Druid Fighter Monk Paladin Ranger Rogue Sorcerer Warlock Wizard))
+  slots_class_prompt = prompt.select("Which caster class are you building spell slots for?", %w(Bard Cleric Druid Paladin Ranger Sorcerer Warlock Wizard))
 end
 
+#asks user to refine search by spell level
 def slots_level_prompt(specific_class)
   puts "Which level of spell are you interested in? (0-9)"
   spell_level = gets.chomp.to_i
@@ -115,6 +123,7 @@ def create_spell_slot(input_spell_name, input_character_class)
   SpellSlot.find_or_create_by(spell_id: Spell.find_by(name: input_spell_name).id, character_class_id: CharacterClass.find_by(class_name: input_character_class).id)
 end
 
+#displays spell slots for current class
 def display_spell_slots(character_class)
   class_slots = SpellSlot.group_by_class(character_class)
   if class_slots == []
@@ -129,21 +138,21 @@ def display_spell_slots(character_class)
 end
 end
 
-#exit message
+#exit image and message
 def exit_image
 puts "                         "
 puts"                       ______                 "
 puts"                     .-      -.             "
 puts"                   /           \\           "
-puts"                  |              |         "
-puts"                  |,  .-.  .-.  ,|         "
-puts"                  | )(__/ \\__)( |         "
-puts"                  |/     /\\   \\|         "
-puts"       (@_        (_     ^^     _)                                 "
-puts"_      ) \\_______\\__|IIIIII|__/__________________________   "
+puts"                  |            |         "
+puts"                  |, .-.  .-. ,|         "
+puts"                  | )(__/\\__)( |         "
+puts"                  |/    /\\    \\|         "
+puts"       (@_       (_     ^^     _)                                 "
+puts"       ) \\_______ \\__|IIIIII|__/__________________________   "
 puts" (_)@8@8{}<________|-\\IIIIII/-|___________________________ > "
 puts"        )_/        \\          /                                    "
-puts"        (@           `--------` img_source = jgs                   "
+puts"        (@          `--------` img_source = jgs                   "
 end
 
 def exit_message
