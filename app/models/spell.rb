@@ -26,7 +26,7 @@ class Spell < ActiveRecord::Base
  end
 
 #selects all instances of a specific school
- def self.group_by_school(school)
+def self.group_by_school(school)
    group_array = []
    self.all.map do |ind_spell|
      if ind_spell.school == school
@@ -49,9 +49,9 @@ def self.group_by_class_and_level(input_class, input_level)
   self.all.map do |ind_spell|
     if ind_spell.level == input_level && ind_spell.classes.include?(input_class)
       output_array << ind_spell
+    end
   end
-end
-output_array
+  output_array
 end
 
 end
