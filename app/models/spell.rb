@@ -1,3 +1,5 @@
+# the model for spells
+
 class Spell < ActiveRecord::Base
   has_many :character_classes, through: :spell_slots
 
