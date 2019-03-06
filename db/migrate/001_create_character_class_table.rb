@@ -1,3 +1,4 @@
+# Migration to create a table for the D&D classes
 class CreateCharacterClassTable < ActiveRecord::Migration[5.0]
   def change
     create_table :character_classes do |t|

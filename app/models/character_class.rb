@@ -8,4 +8,13 @@ class CharacterClass < ActiveRecord::Base
     puts "Spellcasting: #{spellcasting}"
     puts "-----------------------------"
   end
+
+  def self.display_specific_character_class(choice)
+    CharacterClass.all.map do |character_class|
+      if choice == character_class.class_name
+        character_class.display
+      end
+    end
+  end
+
 end

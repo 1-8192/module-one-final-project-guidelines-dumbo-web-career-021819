@@ -1,6 +1,7 @@
 require 'tty-prompt'
 require 'pry'
 
+# prints welcome image
 def welcome_image
 puts
 puts "                                 ______________"
@@ -20,7 +21,7 @@ puts "               `.___,'   `.__,'   `.__,'  img_source = John VanderZwaag"
 puts
 end
 
-
+# weclomes user with nice words
 def welcome
   puts
   puts "-------------------------------------------------------------------"
@@ -28,7 +29,7 @@ def welcome
   puts
 end
 
-#initial promt asks user to search class info, spells, or build spell slots
+# initial prompt asks user to search class info, spells, or build spell slots
 def first_options_prompt
   prompt = TTY::Prompt.new
   prompt.select("Are you interested in class information, spell information, or do you want to view/build spell slots for your character:", %w(Class Spells Slots Exit))
@@ -44,11 +45,7 @@ end
 def specific_class_prompt
   prompt = TTY::Prompt.new
   choice = prompt.select("Please select a class you'd like to know more about", %w(Barbarian Bard Cleric Druid Fighter Monk Paladin Ranger Rogue Sorcerer Warlock Wizard))
-  CharacterClass.all.map do |character_class|
-    if choice == character_class.class_name
-      character_class.display
-    end
-  end
+  CharacterClass.display_specific_character_class(choice)
 end
 
 #initial spell search prompt

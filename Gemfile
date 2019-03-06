@@ -1,13 +1,12 @@
 # frozen_string_literal: true
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "sinatra-activerecord"
-gem "sqlite3"
-gem "pry"
-gem "require_all"
-gem "rest-client"
-gem "rake"
-gem "database_cleaner"
-gem "tty-prompt"
-gem "ascii-image"
-gem "rmagick"
+gem 'sinatra-activerecord'
+gem 'sqlite3'
+gem 'pry'
+gem 'require_all'
+gem 'rest-client'
+gem 'rake'
+gem 'database_cleaner'
+gem 'tty-prompt'
+gem 'rubocop'
