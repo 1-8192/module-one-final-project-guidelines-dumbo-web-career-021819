@@ -8,8 +8,9 @@ ActiveRecord::Base.logger = nil
 prompt = TTY::Prompt.new
 
 welcome
-first_prompt = first_options_prompt
+first_prompt = ""
 while first_prompt != "Exit"
+  first_prompt = first_options_prompt
   if first_prompt == "Class"
     class_prompt_result = class_prompt
       while class_prompt_result != "Exit"
@@ -22,7 +23,7 @@ while first_prompt != "Exit"
         end
         class_prompt_result = class_prompt
       end
-      
+
   elsif first_prompt == "Spells"
     first_spell_prompt = spells_prompt
       while first_spell_prompt != "Exit"
@@ -44,21 +45,23 @@ while first_prompt != "Exit"
     s_class_prompt = slots_class_prompt
     slots_level_prompt(s_class_prompt)
     save_or_view_prompt = save_or_view_or_exit?
-    while save_or_view_prompt != "exit"
+    while save_or_view_prompt != "Exit"
       if save_or_view_prompt == "Save"
         input_spell_name = ask_spell_name
         create_spell_slot(input_spell_name, s_class_prompt)
-        save_or_view_prompt = save_or_view_or_exit?
       elsif save_or_view_prompt == "View"
-          count = 1
-          SpellSlot.all.each do |x|
-            x.display(count)
-            count +=1
-          end
-            save_or_view_prompt = save_or_view_or_exit?
+        count = 1
+        SpellSlot.all.each do |x|
+          x.display(count)
+          count +=1
+        end
       end
+      # first_prompt = first_options_prompt
+      save_or_view_prompt = save_or_view_or_exit?
     end
     first_prompt = first_options_prompt
   end
-  exit_method
-  end
+end
+
+
+exit_method

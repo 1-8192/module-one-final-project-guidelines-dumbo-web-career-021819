@@ -57,7 +57,7 @@ SpellSlot.destroy_all
 
 wizard = CharacterClass.create(class_name: "Wizard", description: "Magical scholar", spellcasting: "Can cast wizard spells")
 sorcerer = CharacterClass.create(class_name: "Sorcerer", description: "Naturally magical", spellcasting: "Can cast sorcerer spells")
-barbarian = CharacterClass.create(class_name: "Barbarian", description: "Brute", spellcasting: "None")
+cleric = CharacterClass.create(class_name: "Cleric", description: "Healer", spellcasting: "Can heal people")
 
 fire_blast = Spell.create(name: "Fire Blast", description: "Huge blast of fire", level: 1, school: "Evocation", classes: "Wizard, Sorcerer")
 ice_blast = Spell.create(name: "Ice Blast", description: "Huge blast of ice", level: 1, school: "Evocation", classes: "Sorcerer")
