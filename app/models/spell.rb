@@ -35,10 +35,9 @@ end
 
 #selects all instances of a specific class
 def self.group_by_class(input_class)
-  input_class_array = []
   self.all.select do |ind_spell|
     ind_spell.classes.include?(input_class)
-  end 
+  end
 end
 
 #selects all instances by class and spell level

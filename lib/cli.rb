@@ -96,8 +96,22 @@ def create_spell_slot(input_spell_name, input_character_class)
   SpellSlot.find_or_create_by(spell_id: Spell.find_by(name: input_spell_name).id, character_class_id: CharacterClass.find_by(class_name: input_character_class).id)
 end
 
+def display_spell_slots(character_class)
+  class_slots = SpellSlot.group_by_class(character_class)
+  if class_slots == []
+    puts "Your #{character_class} does not know any spells yet."
+  else
+    puts "Your #{character_class} knows the folowing spells:"
+  count = 1
+  class_slots.map do |x|
+    x.display(count)
+    count +=1
+  end
+end
+end
+
 #exit message
 def exit_method
   puts "Godspeed, dungeon delver!"
-  exit 
+  exit
 end

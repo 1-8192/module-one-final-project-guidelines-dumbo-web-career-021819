@@ -50,11 +50,7 @@ while first_prompt != "Exit"
         input_spell_name = ask_spell_name
         create_spell_slot(input_spell_name, s_class_prompt)
       elsif save_or_view_prompt == "View"
-        count = 1
-        SpellSlot.all.each do |x|
-          x.display(count)
-          count +=1
-        end
+        display_spell_slots(s_class_prompt)
       end
       # first_prompt = first_options_prompt
       save_or_view_prompt = save_or_view_or_exit?
