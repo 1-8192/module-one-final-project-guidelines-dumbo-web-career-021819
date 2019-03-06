@@ -6,12 +6,15 @@ old_logger = ActiveRecord::Base.logger
 ActiveRecord::Base.logger = nil
 
 prompt = TTY::Prompt.new
-
+# initial welcome to the app
 welcome_image
 welcome
+# declaring initial prompt variable outside of the "while" loop
 first_prompt = ""
+# this happens until "Exit" is chosen
 while first_prompt != "Exit"
   first_prompt = first_options_prompt
+  # submenu for class option
   if first_prompt == "Class"
     class_prompt_result = class_prompt
       while class_prompt_result != "Back"
@@ -25,6 +28,7 @@ while first_prompt != "Exit"
         class_prompt_result = class_prompt
       end
 
+  # submenu for spells option
   elsif first_prompt == "Spells"
     first_spell_prompt = spells_prompt
       while first_spell_prompt != "Back"
@@ -42,6 +46,7 @@ while first_prompt != "Exit"
         first_spell_prompt = spells_prompt
       end
 
+  # submenu for slots option
   elsif first_prompt == "Slots"
     s_class_prompt = slots_class_prompt
     slots_level_prompt(s_class_prompt)
@@ -53,11 +58,12 @@ while first_prompt != "Exit"
       elsif save_or_view_prompt == "View"
         display_spell_slots(s_class_prompt)
       end
-      # first_prompt = first_options_prompt
       save_or_view_prompt = save_or_view_or_back?
     end
     first_prompt = first_options_prompt
   end
 end
+
+# terminate app
 exit_image
 exit_message

@@ -13,9 +13,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
-    ascii-image (0.1.5)
-      rainbow (~> 3.0, >= 3.0.0)
-      rmagick (~> 2.16, >= 2.16.0)
     ast (2.4.0)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
@@ -56,7 +53,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rmagick (2.16.0)
     rubocop (0.65.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -104,13 +100,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ascii-image
   database_cleaner
   pry
   rake
   require_all
   rest-client
-  rmagick
   rubocop
   sinatra-activerecord
   sqlite3

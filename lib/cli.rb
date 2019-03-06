@@ -106,9 +106,15 @@ def ask_spell_name
   input
 end
 
-#checks to make sure spell slot doesn't exist and adds it.
+#checks to make sure spell exists, then creates slot and saves it, if it does.
 def create_spell_slot(input_spell_name, input_character_class)
-  SpellSlot.find_or_create_by(spell_id: Spell.find_by(name: input_spell_name).id, character_class_id: CharacterClass.find_by(class_name: input_character_class).id)
+  if Spell.find_by(name: input_spell_name).nil?
+    puts
+    puts "Not a valid spell! Try again!"
+    puts
+  else
+    SpellSlot.find_or_create_by(spell_id: Spell.find_by(name: input_spell_name).id, character_class_id: CharacterClass.find_by(class_name: input_character_class).id)
+  end
 end
 
 #displays spell slots for current class
@@ -120,7 +126,7 @@ def display_spell_slots(character_class)
     puts
   else
     puts
-    puts "Your #{character_class} knows the folowing spells:"
+    puts "Your #{character_class} knows the following spells:"
     count_slots(class_slots)
   end
 end
