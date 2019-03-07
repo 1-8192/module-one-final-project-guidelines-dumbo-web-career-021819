@@ -99,6 +99,7 @@ def save_or_view_or_back?
   prompt = TTY::Prompt.new
   prompt.select("Would you like to save a spell, view your current spell slots, or exit this menu?", %w(Save View Back))
 end
+
 #confirms name of spell to be saved to slot
 def ask_spell_name
   p "Please input the name of the desired spell."
@@ -123,15 +124,14 @@ end
 
 # displays spell slots for current class
 def display_spell_slots(character_class)
-  class_slots = SpellSlot.group_by_class(character_class)
-  if class_slots == []
+  if SpellSlot.group_by_class(character_class) == []
     puts
     puts "Your #{character_class} does not know any spells yet."
     puts
   else
     puts
     puts "Your #{character_class} knows the following spells:"
-    count_slots(class_slots)
+    count_slots(SpellSlot.group_by_class(character_class))
   end
 end
 
