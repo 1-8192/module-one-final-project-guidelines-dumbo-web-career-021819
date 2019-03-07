@@ -57,6 +57,9 @@ while first_prompt != "Exit"
         create_spell_slot(input_spell_name, s_class_prompt)
       elsif save_or_view_prompt == "View"
         display_spell_slots(s_class_prompt)
+      elsif save_or_view_prompt == "Delete"
+        input_spell_name_for_deletion = ask_spell_name
+        SpellSlot.delete_slot(input_spell_name_for_deletion)
       end
       save_or_view_prompt = save_or_view_or_back?
     end

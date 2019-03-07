@@ -97,7 +97,7 @@ end
 #asks whether use wants to save spell slot
 def save_or_view_or_back?
   prompt = TTY::Prompt.new
-  prompt.select("Would you like to save a spell, view your current spell slots, or exit this menu?", %w(Save View Back))
+  prompt.select("Would you like to save a spell, view your current spell slots, delete a spell, or exit this menu?", %w(Save View Delete Back))
 end
 
 #confirms name of spell to be saved to slot

@@ -12,6 +12,19 @@ class SpellSlot < ActiveRecord::Base
     puts "------------------------------------------------"
   end
 
+  def self.delete_slot(spell_name)
+    bool = 0
+    self.all.map do |ind_spell_slot|
+    if ind_spell_slot.spell.name == spell_name
+      ind_spell_slot.delete
+      bool = 1
+    end
+  end
+    if bool == 0
+      puts "Not a valid spell for deletion."
+    end
+  end
+
   def self.group_by_class(input_class)
     self.all.select do |ind_spell_slot|
       ind_spell_slot.character_class.class_name == input_class
