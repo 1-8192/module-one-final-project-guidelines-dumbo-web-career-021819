@@ -1,8 +1,10 @@
+require 'pry'
 # Spell slots are the join model for class and spell
 class SpellSlot < ActiveRecord::Base
   belongs_to :character_class
   belongs_to :spell
 
+# displays instance info in a nicer format
   def display(count)
     puts "-----------------------------------------------"
     puts "Spell slot: #{count}"
@@ -12,16 +14,16 @@ class SpellSlot < ActiveRecord::Base
     puts "------------------------------------------------"
   end
 
+# deletes a spell slot based on spell name if it already exists
   def self.delete_slot(spell_name)
-    bool = 0
-    self.all.map do |ind_spell_slot|
-    if ind_spell_slot.spell.name == spell_name
-      ind_spell_slot.delete
-      bool = 1
-    end
-  end
-    if bool == 0
-      puts "Not a valid spell for deletion."
+    if !self.all.any?{|spell_slot| spell_slot.spell.name == spell_name}
+      puts "Oops. Not a valid spell for deletion."
+    else
+      self.all.map do |ind_spell_slot|
+         if ind_spell_slot.spell.name == spell_name
+         ind_spell_slot.delete
+         end
+       end
     end
   end
 
