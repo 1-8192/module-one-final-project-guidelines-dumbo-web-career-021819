@@ -1,6 +1,6 @@
 # D&D 5e Spell Search
 
-This CLI application allows the user to browse through class and spell information drawn directly from the D&D 5e API. Spell searches can be refined by class, level, and school of magic. It also allows the user to save spells to slots for a specific class to help build their character.
+This CLI application allows the user to browse through class and spell information drawn directly from the D&D 5e API. Spell searches can be refined by class, level, and school of magic. It also allows the user to save spells to slots for a specific class to help build their character. The user can also edit their spell slots by deleting specific spells.
 
 # Install Guide
 1. Clone directory from github
